@@ -1,0 +1,8 @@
+FROM grapecitycn/wyn-enterprise:5.0.00312.0
+ENV SINGLE_DATABASE_MODE true
+RUN rm -rf /wyn/Server/sample_files && \
+    rm -rf /startup.sh
+ADD ./sample_files /wyn/Server/sample_files
+ADD ./custom_fonts /usr/share/fonts/custom_fonts
+COPY ./startup.sh /
+ENTRYPOINT bash /startup.sh
